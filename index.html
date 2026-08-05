@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 நாட்களில் உடல் எடை குறைப்பு - Weight Loss Challenge</title>
+    <!-- Google Fonts for Tamil -->
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Mukta Malar', sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 600px;
+            margin: -30px auto 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .quote-box p {
+            font-size: 1.05rem;
+            color: #2e7d32;
+            font-weight: 600;
+            font-style: italic;
+        }
+        .date-counter-badge {
+            background: #fff3e0;
+            border: 1px dashed #ff9800;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #e65100;
+            font-size: 1.1rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        button.submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button.submit-btn:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        .result-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            border-left: 5px solid #4CAF50;
+        }
+        .result-section h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        .bmi-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #c8e6c9;
+            margin-bottom: 15px;
+        }
+        .food-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .food-list li {
+            margin-bottom: 8px;
+        }
+        .cta-box {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3e0;
+            border-radius: 8px;
+            border: 1px dashed #ff9800;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background-color: #f57c00;
+        }
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            font-weight: bold;
+            border-radius: 6px;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .whatsapp-btn:hover {
+            background-color: #1ebe5d;
+        }
+        .canvas-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        canvas {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #c8e6c9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>30 நாட்களில் உடல் எடை குறைப்பு</h1>
+        <p>ஆரோக்கியமான முறையில் உங்கள் எடையை குறைத்து ஃபிட்டாக மாறுங்கள்!</p>
+    </header>
+
+    <div class="container">
+        <!-- Date Counter & Real Date Badge -->
+        <div class="date-counter-badge">
+            📅 இன்றைய தேதி: <span id="current-date"></span> | ⏳ சவால் நாள்: <span id="challenge-day">நாள் 1 (Day 1 of 30)</span>
+        </div>
+
+        <!-- Tamil Motivational Quote -->
+        <div class="quote-box">
+            <p>"இன்றைய உழைப்பு நாளை உங்களை ஆரோக்கியமான மற்றும் வலிமையான மனிதராக மாற்றும். விடாமுயற்சியே வெற்றியின் ரகசியம்!"</p>
+        </div>
+
+        <div id="input-form">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #333;">உங்கள் விவரங்களை உள்ளிடவும்</h2>
+            
+            <div class="form-group">
+                <label for="name">பெயர் (Name):</label>
+                <input type="text" id="name" placeholder="உங்கள் பெயரை உள்ளிடவும்" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">வயது (Age):</label>
+                <input type="number" id="age" placeholder="எ.கா. 25" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">பாலினம் (Gender):</label>
+                <select id="gender">
+                    <option value="ஆண்">ஆண் (Male)</option>
+                    <option value="பெண்">பெண் (Female)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">தற்போதைய எடை (Weight in kg):</label>
+                <input type="number" id="weight" placeholder="எ.கா. 75" required>
+            </div>
+
+            <div class="form-group">
+                <label for="height">உயரம் (Height in cm):</label>
+                <input type="number" id="height" placeholder="எ.கா. 170" required>
+            </div>
+
+            <button class="submit-btn" onclick="generatePlan()">BMI மற்றும் திட்டத்தைப் பார்க்க (Get BMI & Plan)</button>
+        </div>
+
+        <!-- Result Section (Initially Hidden) -->
+        <div id="plan-section" class="result-section hidden">
+            <h2 id="greeting" style="color: #2e7d32; margin-bottom: 10px;"></h2>
+            
+            <!-- BMI Display Card -->
+            <div class="bmi-card">
+                <h3 style="color: #2e7d32; margin-bottom: 5px;">📊 உங்களது BMI நிலவரம்:</h3>
+                <p id="bmi-value" style="font-size: 1.1rem; font-weight: bold; color: #333;"></p>
+                <p id="bmi-suggestion" style="margin-top: 5px; font-size: 1rem;"></p>
+            </div>
+
+            <p>உங்களின் தரவுகளின்படி, உங்களுக்கான 30 நாள் பயணத்தின் முதல் நாள் குறிப்புகள் இதோ:</p>
+            
+            <h3 style="margin-top: 15px;">தினம் 1 உணவுத் திட்டம் (Day 1 Diet Plan):</h3>
+            <ul class="food-list">
+                <li>✅ <b>உண்ண வேண்டியவை (Eat):</b> சூடான நீர் 2 கிளாஸ், வேகவைத்த முட்டை அல்லது சுண்டல், காய்கறி சூப், மதிய உணவுடன் குறைந்த அரிசி மற்றும் அதிக கீரை.</li>
+                <li>❌ <b>தவிர்க்க வேண்டியவை (Avoid):</b> சர்க்கரை சேர்த்த டீ/காபி, துரித உணவுகள் (Fast foods), மைதா மற்றும் எண்ணெய் பலகாரங்கள்.</li>
+            </ul>
+
+            <div class="cta-box">
+                <h3>🔥 கொழுப்பை வேகமாக குறைக்க விரும்புகிறீர்களா?</h3>
+                <p>உங்களின் உடல் எடையை இன்னும் வேகமாக குறைக்க எங்கள் பிரத்யேக வழிகாட்டியை உடனே பார்க்கவும்.</p>
+                <a href="https://omg10.com/4/11497407" target="_blank" class="cta-btn">மேலும் கொழுப்பு குறைக்க இங்கே கிளிக் செய்யவும்</a>
+            </div>
+
+            <!-- Shareable Banner Image Preview -->
+            <div style="margin-top: 25px;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: #333;">🖼️ உங்களது வாட்ஸ்அப் பகிர்வு அட்டை (Share Card):</h3>
+                <div class="canvas-container">
+                    <canvas id="shareCanvas" width="600" height="400"></canvas>
+                </div>
+                <button class="whatsapp-btn" onclick="shareViaWhatsAppWithImage()">📲 WhatsApp-ல் பகிர்க (Share)</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Weight Loss Tamil Challenge. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Display real current date in Tamil/Local format
+        const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+        const today = new Date();
+        document.getElementById('current-date').innerText = today.toLocaleDateString('ta-IN', options);
+
+        let generatedBlob = null;
+
+        function generatePlan() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+
+            if(!name || !age || isNaN(weight) || isNaN(heightCm)) {
+                alert('தயவுசெய்து அனைத்து விவரங்களையும் சரியான எண்களில் நிரப்பவும்!');
+                return;
+            }
+
+            // Calculate BMI = weight (kg) / [height (m)]^2
+            const heightM = heightCm / 100;
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+            let suggestionText = "";
+            let bmiStatus = "";
+
+            if (bmi < 18.5) {
+                bmiStatus = `உங்கள் BMI: ${bmi} (எடை குறைவு - Underweight)`;
+                suggestionText = "💡 உங்கள் உடல் எடை இயல்பை விட குறைவாக உள்ளது. ஆரோக்கியமான முறையில் எடையை அதிகரிக்க ஊட்டச்சத்து நிறைந்த உணவுகளை உட்கொள்ளவும்.";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                bmiStatus = `உங்கள் BMI: ${bmi} (சரியான எடை - Normal Weight)`;
+                suggestionText = "👍 நல்வாழ்த்துகள்! உங்கள் எடை சரியான அளவில் உள்ளது. இதைப் பராமரிக்க ஆரோக்கியமான உணவு மற்றும் உடற்பயிற்சியைத் தொடருங்கள்.";
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                bmiStatus = `உங்கள் BMI: ${bmi} (அதிக எடை - Overweight)`;
+                suggestionText = "⚠️ உங்கள் எடை சற்று அதிகமாக உள்ளது. எடையைக் குறைக்க இந்த 30 நாள் சவாலைத் தீவிரமாகப் பின்பற்றி கொழுப்பைக் குறைக்க வேண்டும்.";
+            } else {
+                bmiStatus = `உங்கள் BMI: ${bmi} (உடல் பருமன் - Obese)`;
+                suggestionText = "🔴 எச்சரிக்கை: உங்கள் BMI உடல் பருமன் வரம்பில் உள்ளது. ஆரோக்கியத்தை மீட்க உடனே எடையைக் குறைக்க உணவுக்கட்டுப்பா트를த் தொடங்கவும்!";
+            }
+
+            // Hide form and show plan
+            document.getElementById('input-form').classList.add('hidden');
+            document.getElementById('plan-section').classList.remove('hidden');
+            
+            document.getElementById('greeting').innerText = `வணக்கம் ${name}!`;
+            document.getElementById('bmi-value').innerText = bmiStatus;
+            document.getElementById('bmi-suggestion').innerText = suggestionText;
+
+            // Draw Shareable Canvas Card
+            drawShareCard();
+        }
+
+        function drawShareCard() {
+            const canvas = document.getElementById('shareCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Background gradient
+            const grad = ctx.createLinearGradient(0, 0, 600, 400);
+            grad.addColorStop(0, '#1b5e20');
+            grad.addColorStop(0.5, '#2e7d32');
+            grad.addColorStop(1, '#43a047');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 600, 400);
+
+            // Decorative circles for visual flair
+            ctx.fillStyle = 'rgba(255,255,255,0.08)';
+            ctx.beginPath(); ctx.arc(520, 60, 90, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(60, 340, 70, 0, Math.PI * 2); ctx.fill();
+
+            // Inner card border
+            ctx.strokeStyle = '#a5d6a7';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(20, 20, 560, 360);
+
+            // Emoji badge
+            ctx.font = '42px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🔥💪', 300, 85);
+
+            // Header Title
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.fillText('30 நாட்கள் உடல் எடை', 300, 130);
+            ctx.fillText('குறைப்பு சவால்', 300, 168);
+
+            // Subtitle
+            ctx.fillStyle = '#e8f5e9';
+            ctx.font = '17px sans-serif';
+            ctx.fillText('இன்றே உங்கள் ஆரோக்கிய பயணத்தைத் தொடங்குங்கள்!', 300, 210);
+
+            // Corrected Highlight Pill Position & Width
+            ctx.fillStyle = '#ff9800';
+            const pillWidth = 440;
+            const pillHeight = 50;
+            const pillX = 300 - pillWidth / 2;
+            const pillY = 235;
+            
+            ctx.beginPath();
+            ctx.roundRect(pillX, pillY, pillWidth, pillHeight, 25);
+            ctx.fill();
+
+            // Pill text perfectly aligned inside
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 20px sans-serif';
+            ctx.fillText('✅ இலவச BMI சரிபார்ப்பு', 300, 267);
+
+            // Footer note positioned securely at the bottom
+            ctx.fillStyle = '#c8e6c9';
+            ctx.font = '13px sans-serif';
+            ctx.fillText('modjb7.github.io/weight-loss-in-30-days-', 300, 345);
+
+            // Convert canvas to blob for sharing
+            canvas.toBlob(function(blob) {
+                generatedBlob = blob;
+            }, 'image/png');
+        }
+
+        async function shareViaWhatsAppWithImage() {
+            const livePageUrl = `https://modjb7.github.io/weight-loss-in-30-days-/`;
+            const shareText = `🌟 30 நாட்கள் உடல் எடை குறைப்பு சவால் 🔥💪\n\nஆரோக்கியமான உடலை நோக்கி இன்றே முதல் அடி எடுங்கள்! இலவச BMI சரிபார்ப்பும், தினசரி டயட் டிப்ஸும் இதோ:\n🔗 ${livePageUrl}`;
+
+            if (navigator.canShare && generatedBlob) {
+                const file = new File([generatedBlob], "weight-loss-challenge.png", { type: "image/png" });
+                try {
+                    await navigator.share({
+                        title: '30 Days Weight Loss Challenge',
+                        text: shareText,
+                        files: [file]
+                    });
+                    return;
+                } catch (err) {
+                    console.log('Share API fallback:', err);
+                }
+            }
+
+            const encodedText = encodeURIComponent(shareText);
+            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
